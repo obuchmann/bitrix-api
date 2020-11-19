@@ -1,5 +1,5 @@
 {
-    "name": "pcweb/bitrixapi",
+    "name": "pcweb/bitrix-api",
     "description": ":package_description",
     "license": "license",
     "type": "library",

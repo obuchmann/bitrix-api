@@ -4,9 +4,9 @@
 namespace PcWeb\BitrixApi\Request;
 
 
-use PcWeb\BitrixApi\Response\BitrixResponseFactory;
-use PcWeb\BitrixApi\Exceptions\BitrixException;
 use Illuminate\Http\Client\PendingRequest;
+use PcWeb\BitrixApi\Exceptions\BitrixException;
+use PcWeb\BitrixApi\Response\BitrixResponseFactory;
 
 class BitrixRequest
 {
@@ -46,18 +46,46 @@ class BitrixRequest
             throw new BitrixException("Invalid Response Code " . $httpResponse->status(), $httpResponse->status());
         }
 
-        return $this->responseFactory->makeResponse($this, $httpResponse->json());
+        return $this->responseFactory->responseFromJson($this, $httpResponse->json());
     }
 
 
-    public function arg(string $key, $default)
+    public function getArg(string $key, $default = null)
     {
         return data_get($this->args, $key, $default);
     }
 
-    public function select(array $array)
+    public function arg(string $key, $value)
     {
-        $this->args['select'] = $array;
+        $this->args[$key] = $value;
         return $this;
     }
+
+    public function select(array $array)
+    {
+        return $this->arg('select', $array);
+    }
+
+    public function __call(string $method, array $args)
+    {
+        return $this->arg($method, $args[0]);
+    }
+
+    /**
+     * @return array
+     */
+    public function getArgs(): array
+    {
+        return $this->args;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMethod(): string
+    {
+        return $this->method;
+    }
+
+
 }
