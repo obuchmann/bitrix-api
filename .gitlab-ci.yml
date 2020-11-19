@@ -7,3 +7,13 @@ deploy:
   stage: deploy
   script:
     - 'curl --header "Job-Token: $CI_JOB_TOKEN" --data branch=master "https://git.pc-web.at/api/v4/projects/$CI_PROJECT_ID/packages/composer"'
+  only:
+    - master
+
+deploy-release:
+  stage: deploy
+  script:
+    - 'curl --header "Job-Token: $CI_JOB_TOKEN" --data tag=$CI_COMMIT_REF_NAME "https://git.pc-web.at/api/v4/projects/$CI_PROJECT_ID/packages/composer"'
+  only:
+    - /^v.*$/
+
