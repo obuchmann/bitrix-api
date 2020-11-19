@@ -1,3 +1,5 @@
+image: curlimages/curl:latest
+
 stages:
   - deploy
 
