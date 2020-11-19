@@ -2,6 +2,7 @@
     "name": "pcweb/bitrixapi",
     "description": ":package_description",
     "license": "license",
+    "type": "library",
     "authors": [
         {
             "name": "author name",
@@ -9,7 +10,7 @@
             "homepage": "author homepage"
         }
     ],
-    "homepage": "https://github.com/pcweb/bitrixapi",
+    "homepage": "https://pc-web.at",
     "keywords": ["Laravel", "BitrixApi"],
     "require": {
         "illuminate/support": "~7|~8"
