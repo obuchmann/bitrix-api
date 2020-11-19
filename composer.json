@@ -1,0 +1,41 @@
+{
+    "name": "pcweb/bitrixapi",
+    "description": ":package_description",
+    "license": "license",
+    "authors": [
+        {
+            "name": "author name",
+            "email": "author email",
+            "homepage": "author homepage"
+        }
+    ],
+    "homepage": "https://github.com/pcweb/bitrixapi",
+    "keywords": ["Laravel", "BitrixApi"],
+    "require": {
+        "illuminate/support": "~7|~8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~5|~6"
+    },
+    "autoload": {
+        "psr-4": {
+            "PcWeb\\BitrixApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PcWeb\\BitrixApi\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PcWeb\\BitrixApi\\BitrixApiServiceProvider"
+            ],
+            "aliases": {
+                "BitrixApi": "PcWeb\\BitrixApi\\Facades\\BitrixApi"
+            }
+        }
+    }
+}
