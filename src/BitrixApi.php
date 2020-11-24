@@ -2,12 +2,11 @@
 
 namespace PcWeb\BitrixApi;
 
-use PcWeb\BitrixApi\Exceptions\BitrixException;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 use PcWeb\BitrixApi\Request\BatchRequest;
 use PcWeb\BitrixApi\Request\BitrixRequest;
 use PcWeb\BitrixApi\Response\BitrixResponseFactory;
-use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Http;
 
 class BitrixApi
 {
@@ -36,9 +35,8 @@ class BitrixApi
             ->args($args);
     }
 
-    public function batch(array $requests)
+    public function batch(iterable $requests)
     {
-
         return (new BatchRequest(
             Http::baseUrl($this->settings->webhookUrl)->asJson(),
             $this->responseFactory

@@ -4,6 +4,7 @@
 namespace PcWeb\BitrixApi\Response;
 
 
+use PcWeb\BitrixApi\Exceptions\BitrixException;
 use PcWeb\BitrixApi\Request\BitrixRequest;
 
 class BitrixResponseFactory
@@ -18,7 +19,7 @@ class BitrixResponseFactory
         // TODO: Check if result_error
         // TODO: capture batch Request (result_total, result_next, result_time)
         $response = $this->makeResponse($request, $result);
-        if($response instanceof BitrixCollection){
+        if ($response instanceof BitrixCollection) {
             $response->total = data_get($jsonResponse, 'total');
             $response->start = $request->getArg('start', 0);
             $response->next = data_get($jsonResponse, 'next');
@@ -26,21 +27,52 @@ class BitrixResponseFactory
         return $response;
     }
 
-    public function makeResponse(BitrixRequest $request, array $result)
+    public function makeResponse(BitrixRequest $request, $result)
     {
-        if (is_array($result)) {
-            $collection = new BitrixCollection(array_map(function ($entry) {
-                return new BitrixEntry($entry);
-            }, $result));
-            $collection->map(function ($entry) {
-                return new BitrixEntry($entry);
-            });
-            $collection->setRequest($request);
-            return $collection;
+        if ($result instanceof BitrixEntry) {
+            return $result;
         }
 
-        throw new \Exception("Not yet implemented!");
-        return $jsonResponse;
+        if (!is_array($result)) {
+            throw new BitrixException("Unknown Response $result");
+        }
+
+        /** @var BitrixEntry $entity */
+        $entry = $this->mapValueToEntry($result);
+
+        $entry->setRequest($request);
+        return $entry;
+    }
+
+    private function mapValueToEntry($result)
+    {
+        if (is_scalar($result)) {
+            return $result;
+        }
+
+        if ($this->isSingle($result)) {
+            return new BitrixEntry($result);
+        }
+        return new BitrixCollection(array_map(function ($entry) {
+            if ($entry === null) {
+                return null;
+            }
+            if (is_scalar($entry)) {
+                return $entry;
+            }
+            return $this->mapValueToEntry($entry);
+        }, $result));
+    }
+
+
+    private function isSingle($entry)
+    {
+        foreach ($entry as $item) {
+            if (!is_scalar($item)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 

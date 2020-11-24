@@ -9,7 +9,7 @@ use PcWeb\BitrixApi\Exceptions\BitrixException;
 
 class BatchRequest extends BitrixRequest
 {
-    protected array $requests;
+    protected iterable $requests;
     protected string $method = "batch";
 
     public function each(callable $callback)
@@ -44,7 +44,7 @@ class BatchRequest extends BitrixRequest
         });
     }
 
-    public function build(array $requests)
+    public function build(iterable $requests)
     {
         $this->requests = $requests;
         $cmds = [];
