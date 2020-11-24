@@ -34,6 +34,15 @@ class BatchRequest extends BitrixRequest
             return $callback($this->responseFactory->makeResponse($request, $response), $request);
         });
     }
+    public function mapWithKeys(callable $callback)
+    {
+        $rsp = $this->getResponse();
+
+        return $rsp->result->mapWithKeys(function ($response, $key) use ($callback) {
+            $request = $this->requests[$key];
+            return $callback($this->responseFactory->makeResponse($request, $response), $request);
+        });
+    }
 
     public function build(array $requests)
     {
@@ -61,4 +70,6 @@ class BatchRequest extends BitrixRequest
         ];
         return $this;
     }
+
+
 }
