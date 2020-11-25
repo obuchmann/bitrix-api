@@ -1,9 +1,17 @@
 # BitrixApi
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
+## Package Development
+
+- Packager installieren https://github.com/Jeroen-G/laravel-packager
+ 
+### Neues Package
+
+`shell app php artisan packager:new PcWeb MyPackage`
+
+### Package bearbeiten
+
+`shell app php artisan packager:git https://github.com/author/repository`
+
 
 This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
 
