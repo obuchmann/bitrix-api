@@ -36,7 +36,7 @@ class BitrixApiServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/bitrix.php', 'bitrix');
 
         // Register the service the package provides.
-        $this->app->singleton('bitrix', function ($app) {
+        $this->app->singleton(BitrixApi::class, function ($app) {
             return new BitrixApi(new BitrixSettings(
                 config('bitrix.webhookUrl'),
                 config('bitrix.logDir'),

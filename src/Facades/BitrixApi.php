@@ -24,6 +24,6 @@ class BitrixApi extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'bitrixapi';
+        return \PcWeb\BitrixApi\BitrixApi::class;
     }
 }
