@@ -28,7 +28,9 @@ class BitrixApi
     public function request(string $method, ?array $args = [])
     {
         return (new BitrixRequest(
-            Http::baseUrl($this->settings->webhookUrl)->asJson(),
+            Http::baseUrl($this->settings->webhookUrl)
+                ->timeout($this->settings->timeout)
+                ->asJson(),
             $this->responseFactory
         ))
             ->method($method)
