@@ -11,6 +11,7 @@ class BitrixSettings
     public bool $log = false;
     public bool $dump = true;
     public bool $ignoreSsl = false;
+    public int $timeout = 10;
 
     /**
      * BitrixSettings constructor.
@@ -19,14 +20,22 @@ class BitrixSettings
      * @param bool $log
      * @param bool $dump
      * @param bool $ignoreSsl
+     * @param int $timeout
      */
-    public function __construct(string $webhookUrl, string $logDir, bool $log = false, bool $dump = true, bool $ignoreSsl= false)
+    public function __construct(
+        string $webhookUrl,
+        string $logDir,
+        bool $log = false,
+        bool $dump = true,
+        bool $ignoreSsl = false,
+        int $timeout = 10)
     {
         $this->webhookUrl = $webhookUrl;
         $this->logDir = $logDir;
         $this->log = $log;
         $this->dump = $dump;
         $this->ignoreSsl = $ignoreSsl;
+        $this->timeout = $timeout;
     }
 
 }

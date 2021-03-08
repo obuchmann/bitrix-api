@@ -8,6 +8,11 @@ return [
     'webhookUrl' => env('BITRIX_WEBHOOK_URL', ''),
 
     /**
+     * Enable Logging
+     */
+    'timeout' => env('BITRIX_TIMEOUT', false),
+
+    /**
      * Ignore SSL Certificate Issues
      */
     'ignoreSsl' => env('BITRIX_IGNORE_SSL', false),

@@ -43,6 +43,7 @@ class BitrixApiServiceProvider extends ServiceProvider
                 config('bitrix.logEnabled'),
                 config('bitrix.dumpLog'),
                 config('bitrix.ignoreSsl'),
+                config('bitrix.timeout')
             ), $app->make(BitrixResponseFactory::class));
         });
     }
