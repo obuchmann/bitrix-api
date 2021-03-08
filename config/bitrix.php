@@ -10,7 +10,7 @@ return [
     /**
      * Enable Logging
      */
-    'timeout' => env('BITRIX_TIMEOUT', false),
+    'timeout' => env('BITRIX_TIMEOUT', null),
 
     /**
      * Ignore SSL Certificate Issues
