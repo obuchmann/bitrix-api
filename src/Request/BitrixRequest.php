@@ -27,6 +27,18 @@ class BitrixRequest
         $this->responseFactory = $responseFactory;
     }
 
+    public function timeout(int $timeout)
+    {
+        $this->httpRequest->timeout($timeout);
+        return $this;
+    }
+
+    public function retry(int $times, int $sleep = null)
+    {
+        $this->httpRequest->retry($times, $sleep);
+        return $this;
+    }
+
     public function method(string $method)
     {
         $this->method = $method;
