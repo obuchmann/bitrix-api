@@ -33,16 +33,16 @@ class BitrixApiServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/bitrixapi.php', 'bitrixapi');
+        $this->mergeConfigFrom(__DIR__.'/../config/bitrix.php', 'bitrix');
 
         // Register the service the package provides.
-        $this->app->singleton('bitrixapi', function ($app) {
+        $this->app->singleton('bitrix', function ($app) {
             return new BitrixApi(new BitrixSettings(
-                config('bitrixapi.webhookUrl'),
-                config('bitrixapi.logDir'),
-                config('bitrixapi.logEnabled'),
-                config('bitrixapi.dumpLog'),
-                config('bitrixapi.ignoreSsl'),
+                config('bitrix.webhookUrl'),
+                config('bitrix.logDir'),
+                config('bitrix.logEnabled'),
+                config('bitrix.dumpLog'),
+                config('bitrix.ignoreSsl'),
             ), $app->make(BitrixResponseFactory::class));
         });
     }
@@ -54,7 +54,7 @@ class BitrixApiServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['bitrixapi'];
+        return ['bitrix'];
     }
 
     /**
@@ -66,13 +66,13 @@ class BitrixApiServiceProvider extends ServiceProvider
     {
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__.'/../config/bitrixapi.php' => config_path('bitrixapi.php'),
-        ], 'bitrixapi.config');
+            __DIR__.'/../config/bitrix.php' => config_path('bitrix.php'),
+        ], 'config');
 
         // Publishing the views.
         /*$this->publishes([
             __DIR__.'/../resources/views' => base_path('resources/views/vendor/pcweb'),
-        ], 'bitrixapi.views');*/
+        ], 'bitrix.views');*/
 
         // Publishing assets.
         /*$this->publishes([
