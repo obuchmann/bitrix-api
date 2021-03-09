@@ -104,6 +104,11 @@ class BitrixRequest
         return $this->arg('select', $array);
     }
 
+    public function filter($array)
+    {
+        return $this->arg('filter', $array);
+    }
+
     public function __call(string $method, array $args)
     {
         return $this->arg($method, $args[0]);
