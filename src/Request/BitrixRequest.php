@@ -5,6 +5,7 @@ namespace PcWeb\BitrixApi\Request;
 
 
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Support\Collection;
 use PcWeb\BitrixApi\Exceptions\BitrixException;
 use PcWeb\BitrixApi\Response\BitrixResponseFactory;
 
@@ -49,6 +50,31 @@ class BitrixRequest
     {
         $this->args = $args ?? [];
         return $this;
+    }
+
+    public function get()
+    {
+        return $this->getResponse();
+    }
+
+    public function first()
+    {
+        return $this->getResponse()->first();
+    }
+
+    public function stream()
+    {
+        do {
+            $response = $this->getResponse();
+            yield $response;
+            $this->arg('start', $response->start + 50);
+        }
+        while($response->next && $response->start < $response->total);
+    }
+
+    public function all()
+    {
+        return array_reduce(iterator_to_array($this->stream()), fn (Collection $carry, Collection $item) => $carry->concat($item), new Collection());
     }
 
     public function getResponse()

@@ -5,9 +5,9 @@
     "type": "library",
     "authors": [
         {
-            "name": "author name",
-            "email": "author email",
-            "homepage": "author homepage"
+            "name": "Oliver Buchmann",
+            "email": "o.buchmann@pc-web.at",
+            "homepage": "https://pc-web.at"
         }
     ],
     "homepage": "https://pc-web.at",
