@@ -33,6 +33,12 @@ class BitrixResponseFactory
             return $result;
         }
 
+        if(is_scalar($result)){
+            $entry = new BitrixEntry(['result' => $result]);
+            $entry->setRequest($request);
+            return $entry;
+        }
+
         if (!is_array($result)) {
             throw new BitrixException("Unknown Response $result");
         }
