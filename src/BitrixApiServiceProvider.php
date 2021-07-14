@@ -1,9 +1,9 @@
 <?php
 
-namespace PcWeb\BitrixApi;
+namespace Obuchmann\BitrixApi;
 
-use PcWeb\BitrixApi\BitrixSettings;
-use PcWeb\BitrixApi\Response\BitrixResponseFactory;
+use Obuchmann\BitrixApi\BitrixSettings;
+use Obuchmann\BitrixApi\Response\BitrixResponseFactory;
 use Illuminate\Support\ServiceProvider;
 
 class BitrixApiServiceProvider extends ServiceProvider

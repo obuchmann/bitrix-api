@@ -1,11 +1,11 @@
 <?php
 
 
-namespace PcWeb\BitrixApi\Response;
+namespace Obuchmann\BitrixApi\Response;
 
 
 use Illuminate\Support\Collection;
-use PcWeb\BitrixApi\Request\BitrixRequest;
+use Obuchmann\BitrixApi\Request\BitrixRequest;
 
 class BitrixEntry extends Collection implements BitrixResponse
 {

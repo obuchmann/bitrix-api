@@ -1,7 +1,7 @@
 {
-    "name": "pcweb/bitrix-api",
-    "description": ":package_description",
-    "license": "license",
+    "name": "obuchmann/bitrix-api",
+    "description": "PHP library to access Bitrix24 via incomming webhoook API",
+    "license": "MIT",
     "type": "library",
     "authors": [
         {
@@ -21,21 +21,21 @@
     },
     "autoload": {
         "psr-4": {
-            "PcWeb\\BitrixApi\\": "src/"
+            "Obuchmann\\BitrixApi\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PcWeb\\BitrixApi\\Tests\\": "tests"
+            "Obuchmann\\BitrixApi\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "PcWeb\\BitrixApi\\BitrixApiServiceProvider"
+                "Obuchmann\\BitrixApi\\BitrixApiServiceProvider"
             ],
             "aliases": {
-                "BitrixApi": "PcWeb\\BitrixApi\\Facades\\BitrixApi"
+                "BitrixApi": "Obuchmann\\BitrixApi\\Facades\\BitrixApi"
             }
         }
     }

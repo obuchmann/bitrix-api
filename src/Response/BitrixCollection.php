@@ -1,7 +1,7 @@
 <?php
 
 
-namespace PcWeb\BitrixApi\Response;
+namespace Obuchmann\BitrixApi\Response;
 
 
 use Illuminate\Support\Collection;

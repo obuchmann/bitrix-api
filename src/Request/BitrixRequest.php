@@ -1,13 +1,13 @@
 <?php
 
 
-namespace PcWeb\BitrixApi\Request;
+namespace Obuchmann\BitrixApi\Request;
 
 
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Collection;
-use PcWeb\BitrixApi\Exceptions\BitrixException;
-use PcWeb\BitrixApi\Response\BitrixResponseFactory;
+use Obuchmann\BitrixApi\Exceptions\BitrixException;
+use Obuchmann\BitrixApi\Response\BitrixResponseFactory;
 
 class BitrixRequest
 {

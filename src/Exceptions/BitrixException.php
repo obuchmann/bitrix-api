@@ -1,7 +1,7 @@
 <?php
 
 
-namespace PcWeb\BitrixApi\Exceptions;
+namespace Obuchmann\BitrixApi\Exceptions;
 
 
 class BitrixException extends \Exception

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace PcWeb\BitrixApi\Response;
+namespace Obuchmann\BitrixApi\Response;
 
 
 use Carbon\Carbon;

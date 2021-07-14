@@ -1,10 +1,10 @@
 <?php
 
 
-namespace PcWeb\BitrixApi\Response;
+namespace Obuchmann\BitrixApi\Response;
 
 use Illuminate\Support\Enumerable;
-use PcWeb\BitrixApi\Request\BitrixRequest;
+use Obuchmann\BitrixApi\Request\BitrixRequest;
 
 interface BitrixResponse extends \ArrayAccess, Enumerable
 {

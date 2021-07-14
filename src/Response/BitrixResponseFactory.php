@@ -1,11 +1,11 @@
 <?php
 
 
-namespace PcWeb\BitrixApi\Response;
+namespace Obuchmann\BitrixApi\Response;
 
 
-use PcWeb\BitrixApi\Exceptions\BitrixException;
-use PcWeb\BitrixApi\Request\BitrixRequest;
+use Obuchmann\BitrixApi\Exceptions\BitrixException;
+use Obuchmann\BitrixApi\Request\BitrixRequest;
 
 class BitrixResponseFactory
 {

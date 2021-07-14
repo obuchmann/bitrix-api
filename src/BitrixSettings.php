@@ -1,7 +1,7 @@
 <?php
 
 
-namespace PcWeb\BitrixApi;
+namespace Obuchmann\BitrixApi;
 
 
 class BitrixSettings

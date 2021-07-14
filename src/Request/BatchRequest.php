@@ -1,11 +1,11 @@
 <?php
 
 
-namespace PcWeb\BitrixApi\Request;
+namespace Obuchmann\BitrixApi\Request;
 
 
 use Illuminate\Support\Collection;
-use PcWeb\BitrixApi\Exceptions\BitrixException;
+use Obuchmann\BitrixApi\Exceptions\BitrixException;
 
 class BatchRequest extends BitrixRequest
 {

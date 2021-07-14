@@ -1,12 +1,12 @@
 <?php
 
-namespace PcWeb\BitrixApi;
+namespace Obuchmann\BitrixApi;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
-use PcWeb\BitrixApi\Request\BatchRequest;
-use PcWeb\BitrixApi\Request\BitrixRequest;
-use PcWeb\BitrixApi\Response\BitrixResponseFactory;
+use Obuchmann\BitrixApi\Request\BatchRequest;
+use Obuchmann\BitrixApi\Request\BitrixRequest;
+use Obuchmann\BitrixApi\Response\BitrixResponseFactory;
 
 class BitrixApi
 {
