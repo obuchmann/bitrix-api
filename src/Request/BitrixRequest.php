@@ -7,6 +7,7 @@ namespace Obuchmann\BitrixApi\Request;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Collection;
 use Obuchmann\BitrixApi\Exceptions\BitrixException;
+use Obuchmann\BitrixApi\Response\BitrixCollection;
 use Obuchmann\BitrixApi\Response\BitrixResponseFactory;
 
 class BitrixRequest
@@ -66,6 +67,12 @@ class BitrixRequest
     {
         do {
             $response = $this->getResponse();
+            if(null == $response){
+                $emptyResponse =  new BitrixCollection();
+                $emptyResponse->setRequest($this);
+                yield $emptyResponse;
+                break;
+            }
             yield $response;
             $this->arg('start', $response->start + 50);
         }
