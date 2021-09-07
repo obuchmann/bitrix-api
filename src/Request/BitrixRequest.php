@@ -81,7 +81,19 @@ class BitrixRequest
     {
         $httpResponse = $this->httpRequest->post($this->method . '.json', $this->args);
         if (!$httpResponse->successful()) {
-            throw new BitrixException("Invalid Response Code " . $httpResponse->status(), $httpResponse->status());
+            try{
+                $error = $httpResponse->json();
+
+                if(isset($error['error'])){
+                    if(isset($error['error_description'])){
+                        throw new BitrixException("Invalid Response Code " . $httpResponse->status() . ' error: '. $error['error'] . ' => ' . $error['error_description'], $httpResponse->status());
+                    }else{
+                        throw new BitrixException("Invalid Response Code " . $httpResponse->status() . ' error: '. $error['error'], $httpResponse->status());
+                    }
+                }
+            }catch (\Exception $e){}
+
+            throw new BitrixException("Invalid Response Code " . $httpResponse->status(), $httpResponse->body());
         }
 
         return $this->responseFactory->responseFromJson($this, $httpResponse->json());
