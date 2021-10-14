@@ -100,7 +100,7 @@ class BitrixRequest
                 }
             }catch (\Exception $e){}
 
-            throw new BitrixException("Invalid Response Code " . $httpResponse->status(), $httpResponse->body());
+            throw new BitrixException("Invalid Response Code ". $httpResponse->status(). ' message: ' . $httpResponse->body(), $httpResponse->status());
         }
 
         return $this->responseFactory->responseFromJson($this, $httpResponse->json());
