@@ -61,7 +61,7 @@ class BitrixRequest
     public function first()
     {
         $response = $this->getResponse();
-        if($response) $response->first();
+        if($response) return $response->first();
         return null;
     }
 
