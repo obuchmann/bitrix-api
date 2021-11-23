@@ -60,7 +60,9 @@ class BitrixRequest
 
     public function first()
     {
-        return $this->getResponse()->first();
+        $response = $this->getResponse();
+        if($response) $response->first();
+        return null;
     }
 
     public function stream()
@@ -120,12 +122,12 @@ class BitrixRequest
 
     public function select(array $array)
     {
-        return $this->arg('select', $array);
+        return $this->arg('SELECT', $array);
     }
 
     public function filter($array)
     {
-        return $this->arg('filter', $array);
+        return $this->arg('FILTER', $array);
     }
 
     public function __call(string $method, array $args)
