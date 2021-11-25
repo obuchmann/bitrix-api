@@ -122,12 +122,12 @@ class BitrixRequest
 
     public function select(array $array)
     {
-        return $this->arg('SELECT', $array);
+        return $this->arg('select', $array);
     }
 
     public function filter($array)
     {
-        return $this->arg('FILTER', $array);
+        return $this->arg('filter', $array);
     }
 
     public function __call(string $method, array $args)
